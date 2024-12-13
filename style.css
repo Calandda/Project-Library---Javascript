@@ -1,0 +1,11 @@
+* {
+	background-color: hsl(0,0%,50%);
+}
+
+table {
+	border: 2px solid hsl(0,0%,0%);
+}
+
+th,tr,td{
+	border: 2px solid hsl(0,0%,0%);
+}
