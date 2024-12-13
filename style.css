@@ -2,10 +2,20 @@
 	background-color: hsl(0,0%,50%);
 }
 
-table {
+.bookTable {
 	border: 2px solid hsl(0,0%,0%);
 }
 
-th,tr,td{
-	border: 2px solid hsl(0,0%,0%);
+.tableInner{
+	width: 400px;
+}
+.tableInner{
+	border-top: 2px solid hsl(0, 0%, 0%);
+}
+.tableInner:nth-child(1){
+	border-top: 0px;
+}
+.tableInner td:nth-child(odd){
+	width: 200px;
+	background-color: hsl(0, 0%,75%);
 }

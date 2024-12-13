@@ -29,6 +29,7 @@ function outputDisplay(){
 			cellInner2.innerHTML = value;
 			j++;
 		};
+		tableInner.classList.add('tableInner');
 		table.appendChild(tableInner);
 	}
 	console.log(myLibrary);
