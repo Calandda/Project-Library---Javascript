@@ -9,11 +9,11 @@ function Book(title, author, pages, read){
 	this.author = author;
 	this.page = pages;
 	this.read = read;
-	function readChange(readStatus){
-		if(readStatus = 'true'){
-			this.read = 'Yes';
-		} else {
+	this.readChange = function(){
+		if(this.read == 'Yes'){
 			this.read = 'No';
+		} else if(this.read == 'No') {
+			this.read = 'Yes';
 		}
 	}
 }
@@ -28,8 +28,12 @@ function outputDisplay(){
 	for(let i = 0; i < myLibrary.length; i++){
 		var tableInner = document.createElement('table');
 		var buttonDelete = document.createElement('button');
+		var buttonRead = document.createElement('button');
 		var j = 0;
 		for(let [key,value] of Object.entries(myLibrary[i])){
+			if(key === 'readChange'){
+				break;
+			}
 			var rowInner = tableInner.insertRow(j);
 			var cellInner1 = rowInner.insertCell(0);
 			var cellInner2 = rowInner.insertCell(1);
@@ -39,8 +43,12 @@ function outputDisplay(){
 		};
 		tableInner.dataset.indexNumber = i;
 		buttonDelete.dataset.indexNumber = i;
+		buttonRead.dataset.indexNumber = i;
+		buttonRead.classList.add('buttonRead');
 		buttonDelete.classList.add('buttonDelete');
 		buttonDelete.textContent = 'Delete Book';
+		buttonRead.textContent = 'Change Read';
+		tableInner.append(buttonRead);
 		tableInner.append(buttonDelete);
 		tableInner.classList.add('tableInner');
 		table.appendChild(tableInner);
@@ -72,6 +80,10 @@ buttonSubmit.addEventListener('click',function(){
 document.addEventListener('click',function(event){
 	if(event.target.className === 'buttonDelete'){
 		myLibrary.splice(parseInt(event.target.dataset.indexNumber),1);
+		outputDisplay();
+	} else if (event.target.className === 'buttonRead'){
+		myLibrary[event.target.dataset.indexNumber].readChange();
+		console.log(myLibrary);
 		outputDisplay();
 	}
 },false);
