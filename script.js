@@ -1,4 +1,6 @@
 const myLibrary = [];
+const dialog = document.querySelector('dialog');
+const openDialogButton = document.querySelector('.openButton');
 
 function Book(title, author, pages, read){
 	this.title = title;
@@ -43,4 +45,8 @@ document.addEventListener('DOMContentLoaded', function(){
 	addBookToLibrary(book2);
 	addBookToLibrary(book3);
 	outputDisplay();
+},false);
+
+openDialogButton.addEventListener("click", ()=>{
+	dialog.showModal();
 },false);
