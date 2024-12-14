@@ -1,6 +1,8 @@
 const myLibrary = [];
 const dialog = document.querySelector('dialog');
 const openDialogButton = document.querySelector('.openButton');
+const buttonSubmit = document.querySelector('.buttonSubmit');
+const formInput = document.querySelector('.formInput');
 
 function Book(title, author, pages, read){
 	this.title = title;
@@ -17,11 +19,6 @@ function outputDisplay(){
 	var table = document.querySelector('.bookTable');
 	for(let i = 0; i < myLibrary.length; i++){
 		var tableInner = document.createElement('table');
-		//var row = table.insertRow(i);
-		//var cellInner1 = row.insertCell(0);
-		//var rowInner = tableInner.insertRow(0);
-		//var cell1 = rowInner.insertCell(0);
-		//cellInner1.innerHTML = myLibrary[i]['title'];
 		var j = 0;
 		for(let [key,value] of Object.entries(myLibrary[i])){
 			var rowInner = tableInner.insertRow(j);
@@ -49,4 +46,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 openDialogButton.addEventListener("click", ()=>{
 	dialog.showModal();
+},false);
+
+buttonSubmit.addEventListener('click',function(){
+	const formData = new FormData(formInput);
+	const bookNew = new Book(formData.get('title'),formData.get('author'),formData.get('page'),formData.get('read'));
+	addBookToLibrary(bookNew);
+	outputDisplay();
+	dialog.close();
 },false);

@@ -8,12 +8,22 @@
 	<body>
 		<input class = 'openButton' type = 'button' value = 'New Book'>
 		<dialog>
-			<form>
+			<form class = 'formInput'>
 				<fieldset>
 					<legend>Input New Book</legend>
 					<label for = 'title'>Input Title:</label>
-					<input type = 'text' id = 'title'> 
+					<input type = 'text' id = 'title' name = 'title'/> 
+					<label for = 'author'>Input Author:</label>
+					<input type = 'text' id = 'author' name = 'author'/>
+					<label for = 'page'>Input Page:</label>
+					<input type = 'number' id = 'page' name = 'page'/>
+					<label for = 'read'>Finished reading:</label>
+					<select name = 'read' id = 'read'>
+						<option value = 'yes'>yes</option>
+						<option value = 'no'>no</option>
+					</select>
 				</fieldset>
+				<input class='buttonSubmit' type = 'button' value = 'Submit New Book'>
 			</form>
 		</dialog>
 		<table class = 'bookTable'>	
