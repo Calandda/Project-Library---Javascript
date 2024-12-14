@@ -9,6 +9,13 @@ function Book(title, author, pages, read){
 	this.author = author;
 	this.page = pages;
 	this.read = read;
+	function readChange(readStatus){
+		if(readStatus = 'true'){
+			this.read = 'Yes';
+		} else {
+			this.read = 'No';
+		}
+	}
 }
 
 function addBookToLibrary(book){
@@ -20,6 +27,7 @@ function outputDisplay(){
 	table.innerHTML = '';
 	for(let i = 0; i < myLibrary.length; i++){
 		var tableInner = document.createElement('table');
+		var buttonDelete = document.createElement('button');
 		var j = 0;
 		for(let [key,value] of Object.entries(myLibrary[i])){
 			var rowInner = tableInner.insertRow(j);
@@ -29,10 +37,14 @@ function outputDisplay(){
 			cellInner2.innerHTML = value;
 			j++;
 		};
+		tableInner.dataset.indexNumber = i;
+		buttonDelete.dataset.indexNumber = i;
+		buttonDelete.classList.add('buttonDelete');
+		buttonDelete.textContent = 'Delete Book';
+		tableInner.append(buttonDelete);
 		tableInner.classList.add('tableInner');
 		table.appendChild(tableInner);
 	}
-	console.log(myLibrary);
 }
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -55,4 +67,11 @@ buttonSubmit.addEventListener('click',function(){
 	addBookToLibrary(bookNew);
 	outputDisplay();
 	dialog.close();
+},false);
+
+document.addEventListener('click',function(event){
+	if(event.target.className === 'buttonDelete'){
+		myLibrary.splice(parseInt(event.target.dataset.indexNumber),1);
+		outputDisplay();
+	}
 },false);
