@@ -17,6 +17,7 @@ function addBookToLibrary(book){
 
 function outputDisplay(){
 	var table = document.querySelector('.bookTable');
+	table.innerHTML = '';
 	for(let i = 0; i < myLibrary.length; i++){
 		var tableInner = document.createElement('table');
 		var j = 0;
