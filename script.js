@@ -4,15 +4,17 @@ const openDialogButton = document.querySelector('.openButton');
 const buttonSubmit = document.querySelector('.buttonSubmit');
 const formInput = document.querySelector('.formInput');
 
-function Book(title, author, pages, read){
-	this.title = title;
-	this.author = author;
-	this.page = pages;
-	this.read = read;
-	this.readChange = function(){
+class Book{
+	constructor(title, author,pages,read){
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.read = read;
+	}
+	readChange(){
 		if(this.read == 'Yes'){
-			this.read = 'No';
-		} else if(this.read == 'No') {
+			this.read= 'No';
+		} else if(this.read == 'No'){
 			this.read = 'Yes';
 		}
 	}
