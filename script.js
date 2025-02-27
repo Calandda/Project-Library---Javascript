@@ -3,6 +3,7 @@ const dialog = document.querySelector('dialog');
 const openDialogButton = document.querySelector('.openButton');
 const buttonSubmit = document.querySelector('.buttonSubmit');
 const formInput = document.querySelector('.formInput');
+const input = document.querySelector('input');
 
 class Book{
 	constructor(title, author,pages,read){
@@ -71,11 +72,12 @@ openDialogButton.addEventListener("click", ()=>{
 	dialog.showModal();
 },false);
 
-buttonSubmit.addEventListener('click',function(){
+formInput.addEventListener("submit",(e)=>{
 	const formData = new FormData(formInput);
 	const bookNew = new Book(formData.get('title'),formData.get('author'),formData.get('page'),formData.get('read'));
 	addBookToLibrary(bookNew);
 	outputDisplay();
+	e.preventDefault();
 	dialog.close();
 },false);
 

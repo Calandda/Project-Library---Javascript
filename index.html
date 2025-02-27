@@ -12,18 +12,18 @@
 				<fieldset>
 					<legend>Input New Book</legend>
 					<label for = 'title'>Input Title:</label>
-					<input type = 'text' id = 'title' name = 'title'/> 
+					<input type = 'text' id = 'title' name = 'title' required/> 
 					<label for = 'author'>Input Author:</label>
-					<input type = 'text' id = 'author' name = 'author'/>
+					<input type = 'text' id = 'author' name = 'author' required/>
 					<label for = 'page'>Input Page:</label>
-					<input type = 'number' id = 'page' name = 'page'/>
+					<input type = 'number' id = 'page' name = 'page' required/>
 					<label for = 'read'>Finished reading:</label>
 					<select name = 'read' id = 'read'>
 						<option value = 'Yes'>Yes</option>
 						<option value = 'No'>No</option>
 					</select>
 				</fieldset>
-				<input class='buttonSubmit' type = 'button' value = 'Submit New Book'>
+				<button class='buttonSubmit'>Submit</button>
 			</form>
 		</dialog>
 		<table class = 'bookTable'>	
